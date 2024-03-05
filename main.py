@@ -4,12 +4,14 @@ import json
 
 QUESTIONS_PATH = "questions.json"
 
+def get_questions():
+    with open(QUESTIONS_PATH, "r") as f:
+        return json.load(f)
+
 def main():
     state = hd.state(quiz=None)
     if state.quiz is None:
-        with open(QUESTIONS_PATH, "r") as f:
-            questions = json.load(f)
-            state.quiz = Quiz(questions, reps=2)
+            state.quiz = Quiz(get_questions(), reps=2)
 
     with hd.box(
         gap=1, 
