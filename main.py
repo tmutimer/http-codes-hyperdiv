@@ -23,20 +23,21 @@ def main():
 
         if not state.quiz.is_complete():
             question = state.quiz.get_current_question()
-            hd.text(state.quiz.get_current_question())
+            hd.h3(state.quiz.get_current_question())
             with hd.form(direction="horizontal", gap=1, grow=1) as form:
                 with hd.box():
-                    form.text_input(value="", name="answer", grow=1)
+                    hd.text("Type your answer and press Enter:")
+                    answer_box = form.text_input(value="", name="answer", grow=1)
                 # form.submit_button("Submit", variant="success")
 
                 if form.submitted:
-                    print(form.form_data['answer'])
                     state.quiz.answer_question(form.form_data['answer'])
                     hd.text(form.form_data['answer'])
-                    form.form_data['answer'] = ""
+                    answer_box.value = ""
 
-            if not state.quiz.is_complete():                
-                hd.text(state.quiz.get_score())
+            success = hd.alert("Correct!", variant='success')
+
+            if not state.quiz.is_complete():
                 hd.text("(Ans: " + state.quiz.current_question.answer + ")")
         else:
             hd.text("Well done!")
@@ -44,5 +45,6 @@ def main():
         with hd.box(width="100%"):
             progress_percent = state.quiz.get_score()*100/state.quiz.get_total_questions()
             bar = hd.progress_bar(str(progress_percent) + "%", value=int(progress_percent))
+            
 
 hd.run(main)

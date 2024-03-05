@@ -46,3 +46,10 @@ def test_incorrect_answer():
     result = quiz.answer_question('blue')
     assert result == False
     assert quiz.get_score() == 0
+
+def test_previous_question():
+    quiz = create_test_quiz()
+    question = quiz.current_question.prompt
+    quiz.answer_question(quiz.current_question.answer)
+    prev = quiz.get_previous_question()
+    assert prev == (question, True)

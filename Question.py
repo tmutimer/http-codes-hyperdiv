@@ -4,12 +4,14 @@ class Question():
         self.answer = answer
         self.score = 0
         self.reps = reps
+        self.answer_history = []
 
     def check_answer(self, answer):
         return answer == self.answer
     
     def submit_answer(self, answer):
         correct = self.check_answer(answer)
+        self.answer_history.append(correct)
         if correct:
             self.score += 1
         else:

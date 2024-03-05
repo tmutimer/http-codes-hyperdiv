@@ -7,6 +7,7 @@ class Quiz():
         self.reps = reps
         self.questions = [Question(q['prompt'], q['answer'],reps=self.reps) for q in questions]
         self.current_question = None
+        self.previous_question = None
         self.select_new_question()
 
     def get_current_question(self):
@@ -18,7 +19,9 @@ class Quiz():
         return result
     
     def select_new_question(self):
-        incomplete_questions = [q for q in self.questions if not q.is_complete()]
+        incomplete_questions = [q for q in self.questions if not q.is_complete() and q != self.current_question]
+        
+        self.previous_question = self.current_question
         
         if not incomplete_questions:
             self.current_question = None
@@ -35,3 +38,6 @@ class Quiz():
     
     def is_complete(self):
         return all([q.is_complete() for q in self.questions])
+    
+    def get_previous_question(self):
+        return (self.previous_question.prompt, self.previous_question.answer_history[-1])
