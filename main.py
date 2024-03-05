@@ -37,8 +37,8 @@ def main():
 
             success = hd.alert("Correct!", variant='success')
 
-            if not state.quiz.is_complete():
-                hd.text("(Ans: " + state.quiz.current_question.answer + ")")
+            # if not state.quiz.is_complete():
+            #     hd.text("(Ans: " + state.quiz.current_question.answer + ")")
         else:
             hd.text("Well done!")
 

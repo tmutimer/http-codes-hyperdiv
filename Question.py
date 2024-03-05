@@ -15,7 +15,6 @@ class Question():
         if correct:
             self.score += 1
         else:
-            print("Incorrect")
             self.score = max(0, self.score - 1)
         return (correct, self.score)
     
