@@ -1,206 +1,257 @@
 [
     {
         "prompt": "OK: The request succeeded.",
-        "answer": "200"
+        "answer": "200",
+        "level": 1
     },
     {
         "prompt": "Created: The request succeeded, and a new resource was created as a result.",
-        "answer": "201"
+        "answer": "201",
+        "level": 2
     },
     {
         "prompt": "Accepted: The request has been received but not yet acted upon.",
-        "answer": "202"
+        "answer": "202",
+        "level": 2
     },
     {
         "prompt": "Non-Authoritative Information: The server successfully processed the request, but is returning information from another source.",
-        "answer": "203"
+        "answer": "203",
+        "level": 3
     },
     {
         "prompt": "No Content: The server successfully processed the request, but is not returning any content.",
-        "answer": "204"
+        "answer": "204",
+        "level": 2
     },
     {
         "prompt": "Reset Content: The server successfully processed the request, but is not returning any content.",
-        "answer": "205"
+        "answer": "205",
+        "level": 3
     },
     {
         "prompt": "Partial Content: The server is delivering only part of the resource due to a range header sent by the client.",
-        "answer": "206"
+        "answer": "206",
+        "level": 3
     },
     {
         "prompt": "Multi-Status: Conveys information about multiple resources, for situations where multiple status codes might be appropriate.",
-        "answer": "207"
+        "answer": "207",
+        "level": 2
     },
     {
         "prompt": "Already Reported: The members of a DAV binding have already been enumerated in a previous reply to this request, and are not being included again.",
-        "answer": "208"
+        "answer": "208",
+        "level": 3
     },
     {
         "prompt": "IM Used: The server has fulfilled a request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance.",
-        "answer": "226"
+        "answer": "226",
+        "level": 3
     },
     {
         "prompt": "Multiple Choices: The requested resource has different choices and cannot be resolved into one.",
-        "answer": "300"
+        "answer": "300",
+        "level": 3
     },
     {
         "prompt": "Moved Permanently: The requested resource has been assigned a new permanent URI and any future references should use one of the returned URIs.",
-        "answer": "301"
+        "answer": "301",
+        "level": 1
     },
     {
         "prompt": "Found: The requested resource resides temporarily under a different URI.",
-        "answer": "302"
+        "answer": "302",
+        "level": 1
     },
     {
         "prompt": "See Other: The response to the request can be found under another URI using the GET method and should be retrieved by the client.",
-        "answer": "303"
+        "answer": "303",
+        "level": 3
     },
     {
         "prompt": "Not Modified: The resource has not been modified since the version specified by the request headers.",
-        "answer": "304"
+        "answer": "304",
+        "level": 1
     },
     {
         "prompt": "Use Proxy (Deprecated): The requested resource is available only through a proxy, the address for which is provided in the response.",
-        "answer": "305"
+        "answer": "305",
+        "level": 3
     },
     {
         "prompt": "Temporary Redirect: The request should be repeated with another URI, but future requests can still use the original URI.",
-        "answer": "307"
+        "answer": "307",
+        "level": 2
     },
     {
         "prompt": "Permanent Redirect: The request and all future requests should be repeated using another URI.",
-        "answer": "308"
+        "answer": "308",
+        "level": 2
     },
     {
         "prompt": "Bad Request: The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).",
-        "answer": "400"
+        "answer": "400",
+        "level": 1
     },
     {
         "prompt": "Unauthorized: The request has not been applied because it lacks valid authentication credentials for the target resource.",
-        "answer": "401"
+        "answer": "401",
+        "level": 1
     },
     {
         "prompt": "Forbidden: The server understood the request but refuses to authorize it.",
-        "answer": "403"
+        "answer": "403",
+        "level": 1
     },
     {
         "prompt": "Not Found: The server has not found anything matching the Request-URI.",
-        "answer": "404"
+        "answer": "404",
+        "level": 1
     },
     {
         "prompt": "Method Not Allowed: The method received in the request-line is known by the origin server but not supported by the target resource.",
-        "answer": "405"
+        "answer": "405",
+        "level": 2
     },
     {
         "prompt": "Not Acceptable: The resource identified by the request is only capable of generating response entities that have content characteristics not acceptable according to the accept headers sent in the request.",
-        "answer": "406"
+        "answer": "406",
+        "level": 3
     },
     {
         "prompt": "Proxy Authentication Required: The client must first authenticate itself with the proxy.",
-        "answer": "407"
+        "answer": "407",
+        "level": 3
     },
     {
         "prompt": "Request Timeout: The server did not receive a complete request message within the time that it was prepared to wait.",
-        "answer": "408"
+        "answer": "408",
+        "level": 3
     },
     {
         "prompt": "Gone: The resource requested is no longer available and will not be available again.",
-        "answer": "410"
+        "answer": "410",
+        "level": 2
     },
     {
         "prompt": "Length Required: The server refuses to accept the request without a defined Content- Length.",
-        "answer": "411"
+        "answer": "411",
+        "level": 3
     },
     {
         "prompt": "Unsupported Media Type: The server refuses to accept the request because the payload format is in an unsupported format.",
-        "answer": "415"
+        "answer": "415",
+        "level": 2
     },
     {
         "prompt": "Requested Range Not Satisfiable: The client has asked for a portion of the file, but the server cannot supply that portion.",
-        "answer": "416"
+        "answer": "416",
+        "level": 3
     },
     {
         "prompt": "Expectation Failed: The server cannot meet the requirements of the Expect request-header field.",
-        "answer": "417"
+        "answer": "417",
+        "level": 3
     },
     {
         "prompt": "I'm a teapot: This code was defined in 1998 as one of the traditional IETF April Fools' jokes, in RFC 2324, Hyper Text Coffee Pot Control Protocol.",
-        "answer": "418"
+        "answer": "418",
+        "level": 3
     },
     {
         "prompt": "Unprocessable Entity: The server understands the content type of the request entity, and the syntax of the request entity is correct, but it was unable to process the contained instructions.",
-        "answer": "422"
+        "answer": "422",
+        "level": 2
     },
     {
         "prompt": "Locked: The resource that is being accessed is locked.",
-        "answer": "423"
+        "answer": "423",
+        "level": 2
     },
     {
         "prompt": "Failed Dependency: The request failed due to failure of a previous request.",
-        "answer": "424"
+        "answer": "424",
+        "level": 3
     },
     {
         "prompt": "Upgrade Required: The client should switch to a different protocol such as TLS/1.0.",
-        "answer": "426"
+        "answer": "426",
+        "level": 3
     },
     {
         "prompt": "Precondition Required: The origin server requires the request to be conditional.",
-        "answer": "428"
+        "answer": "428",
+        "level": 3
     },
     {
         "prompt": "Too Many Requests: The user has sent too many requests in a given amount of time.",
-        "answer": "429"
+        "answer": "429",
+        "level": 2
     },
     {
         "prompt": "Request Header Fields Too Large: The server is unwilling to process the request because its header fields are too large.",
-        "answer": "431"
+        "answer": "431",
+        "level": 3
     },
     {
         "prompt": "Unavailable For Legal Reasons: The server is denying access to the resource as a consequence of a legal demand.",
-        "answer": "451"
+        "answer": "451",
+        "level": 3
     },
     {
         "prompt": "Internal Server Error: The server encountered an unexpected condition that prevented it from fulfilling the request.",
-        "answer": "500"
+        "answer": "500",
+        "level": 1
     },
     {
         "prompt": "Not Implemented: The server does not support the functionality required to fulfill the request.",
-        "answer": "501"
+        "answer": "501",
+        "level": 2
     },
     {
         "prompt": "Bad Gateway: The server, while acting as a gateway or proxy, received an invalid response from the upstream server.",
-        "answer": "502"
+        "answer": "502",
+        "level": 2
     },
     {
         "prompt": "Service Unavailable: The server is currently unable to handle the request due to temporary overloading or maintenance.",
-        "answer": "503"
+        "answer": "503",
+        "level": 2
     },
     {
         "prompt": "Gateway Timeout: The server, while acting as a gateway or proxy, did not receive a timely response from the upstream server.",
-        "answer": "504"
+        "answer": "504",
+        "level": 2
     },
     {
         "prompt": "HTTP Version Not Supported: The server does not support the HTTP protocol version that was used in the request.",
-        "answer": "505"
+        "answer": "505",
+        "level": 3
     },
     {
         "prompt": "Variant Also Negotiates: Transparent content negotiation for the request results in a circular reference.",
-        "answer": "506"
+        "answer": "506",
+        "level": 3
     },
     {
         "prompt": "Insufficient Storage: The method could not be performed on the resource because the server is unable to store the representation needed to successfully complete the request.",
-        "answer": "507"
+        "answer": "507",
+        "level": 3
     },
     {
         "prompt": "Loop Detected: The server detected an infinite loop while processing the request.",
-        "answer": "508"
+        "answer": "508",
+        "level": 3
     },
     {
         "prompt": "Not Extended: Further extensions to the request are required for the server to fulfill it.",
-        "answer": "510"
+        "answer": "510",
+        "level": 3
     },
     {
         "prompt": "Network Authentication Required: The client needs to authenticate to gain network access.",
-        "answer": "511"
+        "answer": "511",
+        "level": 3
     }
 ]
