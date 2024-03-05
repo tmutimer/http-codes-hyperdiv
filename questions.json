@@ -1,0 +1,82 @@
+[
+    {
+        "prompt": "The request has succeeded.",
+        "answer": "200"
+    },
+    {
+        "prompt": "The request has been fulfilled and resulted in a new resource being created.",
+        "answer": "201"
+    },
+    {
+        "prompt": "The server has accepted the request but has not processed it yet.",
+        "answer": "202"
+    },
+    {
+        "prompt": "The server successfully processed the request, but is not returning any content.",
+        "answer": "204"
+    },
+    {
+        "prompt": "The requested resource is available at a different URI and should be accessed through a redirect.",
+        "answer": "301"
+    },
+    {
+        "prompt": "The request must be performed with another request method, typically GET instead of POST.",
+        "answer": "303"
+    },
+    {
+        "prompt": "The client must take additional action to complete the request by following a redirect.",
+        "answer": "307"
+    },
+    {
+        "prompt": "The request could not be processed because of bad request syntax, excessive size, or another client error.",
+        "answer": "400"
+    },
+    {
+        "prompt": "The request requires user authentication.",
+        "answer": "401"
+    },
+    {
+        "prompt": "The server understood the request but refuses to authorize it.",
+        "answer": "403"
+    },
+    {
+        "prompt": "The server has not found anything matching the Request-URI.",
+        "answer": "404"
+    },
+    {
+        "prompt": "The method specified in the Request-Line is not allowed for the resource identified by the Request-URI.",
+        "answer": "405"
+    },
+    {
+        "prompt": "The resource requested is no longer available and will not be available again.",
+        "answer": "410"
+    },
+    {
+        "prompt": "The request did not specify the length of its content, which is required by the requested resource.",
+        "answer": "411"
+    },
+    {
+        "prompt": "The server is refusing to service the request because the entity of the request is in a format not supported by the requested resource for the requested method.",
+        "answer": "415"
+    },
+    {
+        "prompt": "The client needs to authenticate to gain network access. Intended for use by intercepting proxies used to control access to the network.",
+        "answer": "407"
+    },
+    {
+        "prompt": "The server encountered an unexpected condition that prevented it from fulfilling the request.",
+        "answer": "500"
+    },
+    {
+        "prompt": "The server does not support the functionality required to fulfill the request.",
+        "answer": "501"
+    },
+    {
+        "prompt": "The server, while acting as a gateway or proxy, received an invalid response from the upstream server it accessed in attempting to fulfill the request.",
+        "answer": "502"
+    },
+    {
+        "prompt": "The server is currently unable to handle the request due to a temporary overloading or maintenance of the server.",
+        "answer": "503"
+    }
+]

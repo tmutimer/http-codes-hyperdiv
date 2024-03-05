@@ -1,8 +1,8 @@
 import random
-
+import hyperdiv as hd
 from Question import Question
 
-class Quiz():
+class Quiz(hd.BaseState):
     def __init__(self, questions, reps=1):
         self.reps = reps
         self.questions = [Question(q['prompt'], q['answer'],reps=self.reps) for q in questions]
