@@ -1,82 +1,82 @@
 [
     {
-        "prompt": "The request has succeeded.",
+        "prompt": "Success: The request has succeeded according to the standard response for successful HTTP requests.",
         "answer": "200"
     },
     {
-        "prompt": "The request has been fulfilled and resulted in a new resource being created.",
+        "prompt": "Created: The request has been fulfilled, resulting in the creation of a new resource.",
         "answer": "201"
     },
     {
-        "prompt": "The server has accepted the request but has not processed it yet.",
+        "prompt": "Accepted: The request has been accepted for processing, but the processing has not been completed.",
         "answer": "202"
     },
     {
-        "prompt": "The server successfully processed the request, but is not returning any content.",
+        "prompt": "No Content: The server successfully processed the request, but is not returning any content.",
         "answer": "204"
     },
     {
-        "prompt": "The requested resource is available at a different URI and should be accessed through a redirect.",
+        "prompt": "Moved Permanently: The requested resource has been assigned a new permanent URI and any future references should use one of the returned URIs.",
         "answer": "301"
     },
     {
-        "prompt": "The request must be performed with another request method, typically GET instead of POST.",
+        "prompt": "See Other: The response to the request can be found under another URI using the GET method and should be retrieved by the client.",
         "answer": "303"
     },
     {
-        "prompt": "The client must take additional action to complete the request by following a redirect.",
+        "prompt": "Temporary Redirect: The request should be repeated with another URI, but future requests can still use the original URI.",
         "answer": "307"
     },
     {
-        "prompt": "The request could not be processed because of bad request syntax, excessive size, or another client error.",
+        "prompt": "Bad Request: The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).",
         "answer": "400"
     },
     {
-        "prompt": "The request requires user authentication.",
+        "prompt": "Unauthorized: The request has not been applied because it lacks valid authentication credentials for the target resource.",
         "answer": "401"
     },
     {
-        "prompt": "The server understood the request but refuses to authorize it.",
+        "prompt": "Forbidden: The server understood the request but refuses to authorize it.",
         "answer": "403"
     },
     {
-        "prompt": "The server has not found anything matching the Request-URI.",
+        "prompt": "Not Found: The server has not found anything matching the Request-URI.",
         "answer": "404"
     },
     {
-        "prompt": "The method specified in the Request-Line is not allowed for the resource identified by the Request-URI.",
+        "prompt": "Method Not Allowed: The method received in the request-line is known by the origin server but not supported by the target resource.",
         "answer": "405"
     },
     {
-        "prompt": "The resource requested is no longer available and will not be available again.",
+        "prompt": "Gone: The resource requested is no longer available and will not be available again.",
         "answer": "410"
     },
     {
-        "prompt": "The request did not specify the length of its content, which is required by the requested resource.",
+        "prompt": "Length Required: The server refuses to accept the request without a defined Content- Length.",
         "answer": "411"
     },
     {
-        "prompt": "The server is refusing to service the request because the entity of the request is in a format not supported by the requested resource for the requested method.",
+        "prompt": "Unsupported Media Type: The server refuses to accept the request because the payload format is in an unsupported format.",
         "answer": "415"
     },
     {
-        "prompt": "The client needs to authenticate to gain network access. Intended for use by intercepting proxies used to control access to the network.",
+        "prompt": "Proxy Authentication Required: The client must first authenticate itself with the proxy.",
         "answer": "407"
     },
     {
-        "prompt": "The server encountered an unexpected condition that prevented it from fulfilling the request.",
+        "prompt": "Internal Server Error: The server encountered an unexpected condition that prevented it from fulfilling the request.",
         "answer": "500"
     },
     {
-        "prompt": "The server does not support the functionality required to fulfill the request.",
+        "prompt": "Not Implemented: The server does not support the functionality required to fulfill the request.",
         "answer": "501"
     },
     {
-        "prompt": "The server, while acting as a gateway or proxy, received an invalid response from the upstream server it accessed in attempting to fulfill the request.",
+        "prompt": "Bad Gateway: The server, while acting as a gateway or proxy, received an invalid response from the upstream server.",
         "answer": "502"
     },
     {
-        "prompt": "The server is currently unable to handle the request due to a temporary overloading or maintenance of the server.",
+        "prompt": "Service Unavailable: The server is currently unable to handle the request due to temporary overloading or maintenance.",
         "answer": "503"
     }
 ]
