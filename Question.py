@@ -13,7 +13,7 @@ class Question():
         if correct:
             self.score += 1
         else:
-            self.score = min(0, self.score - 1)
+            self.score = max(0, self.score - 1)
         return (correct, self.score)
     
     def is_complete(self):

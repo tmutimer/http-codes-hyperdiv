@@ -2,18 +2,15 @@ import random
 import hyperdiv as hd
 from Question import Question
 
-class Quiz(hd.BaseState):
+class Quiz():
     def __init__(self, questions, reps=1):
         self.reps = reps
         self.questions = [Question(q['prompt'], q['answer'],reps=self.reps) for q in questions]
         self.current_question = None
         self.select_new_question()
 
-    def answer_question(self, question, answer):
-        question.submit_answer(answer)
-
     def get_current_question(self):
-        return self.current_question.prompt
+        return self.current_question.prompt if self.current_question else "Quiz Complete!"
     
     def answer_question(self, answer):
         (result, _) = self.current_question.submit_answer(answer)

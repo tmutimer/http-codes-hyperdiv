@@ -40,3 +40,9 @@ def test_get_total_questions():
     assert quiz.get_total_questions() == 3
     quiz = Quiz([{"prompt": "What color are apples?", "answer": "red"}], reps=2)
     assert quiz.get_total_questions() == 2
+
+def test_incorrect_answer():
+    quiz = create_quiz_single_question()
+    result = quiz.answer_question('blue')
+    assert result == False
+    assert quiz.get_score() == 0
