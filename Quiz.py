@@ -14,10 +14,27 @@ class Quiz():
         return self.current_question.prompt if self.current_question else "Quiz Complete!"
     
     def answer_question(self, answer):
-        (result, _) = self.current_question.submit_answer(answer)
+        (result, _) = self.submit_answer(self.current_question, answer)
         self.select_new_question()
         return result
     
+    def submit_answer(self, question, answer):
+        correct = question.check_answer(answer)
+        question.answer_history.append(correct)
+        if correct:
+            if self.is_final_question():
+                question.score = self.reps
+            else:
+                question.score += 1
+
+        else:
+            question.score = max(0, question.score - 1)
+        return (correct, question.score)
+    
+    def is_final_question(self):
+        # if there are no other incomplete questions, this is the final question
+        return len([q for q in self.questions if not q.is_complete() and q != self.current_question]) == 0
+
     def select_new_question(self):
         incomplete_questions = [q for q in self.questions if not q.is_complete() and q != self.current_question]
         

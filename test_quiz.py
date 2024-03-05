@@ -53,3 +53,15 @@ def test_previous_question():
     quiz.answer_question(quiz.current_question.answer)
     prev = quiz.get_previous_question()
     assert prev == (question, True)
+
+def test_final_question_no_repeat():
+    '''
+    Test that we don't test the final question more than once in a row
+    '''
+    questions = [
+        {"prompt": "What color are apples?", "answer": "red"},
+    ]
+    quiz = Quiz(questions, reps=3)
+    quiz.answer_question('red')
+    assert quiz.get_current_question() == "Quiz Complete!"
+    assert quiz.get_score() == quiz.get_total_questions()
