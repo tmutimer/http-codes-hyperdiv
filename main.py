@@ -22,12 +22,11 @@ def main():
         hd.h1("Learn HTTP Codes")
 
         if not state.quiz.is_complete():
-            question = state.quiz.get_current_question()
             hd.h3(state.quiz.get_current_question())
             with hd.form(direction="horizontal", gap=1, grow=1) as form:
                 with hd.box():
                     hd.text("Type your answer and press Enter:")
-                    answer_box = form.text_input(value="", name="answer", grow=1)
+                    answer_box = form.text_input(value="", name="answer", grow=1, placeholder="e.g. 403")
                 # form.submit_button("Submit", variant="success")
 
                 if form.submitted:

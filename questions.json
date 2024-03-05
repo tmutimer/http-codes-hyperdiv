@@ -1,31 +1,75 @@
 [
     {
-        "prompt": "Success: The request has succeeded according to the standard response for successful HTTP requests.",
+        "prompt": "OK: The request succeeded.",
         "answer": "200"
     },
     {
-        "prompt": "Created: The request has been fulfilled, resulting in the creation of a new resource.",
+        "prompt": "Created: The request succeeded, and a new resource was created as a result.",
         "answer": "201"
     },
     {
-        "prompt": "Accepted: The request has been accepted for processing, but the processing has not been completed.",
+        "prompt": "Accepted: The request has been received but not yet acted upon.",
         "answer": "202"
+    },
+    {
+        "prompt": "Non-Authoritative Information: The server successfully processed the request, but is returning information from another source.",
+        "answer": "203"
     },
     {
         "prompt": "No Content: The server successfully processed the request, but is not returning any content.",
         "answer": "204"
     },
     {
+        "prompt": "Reset Content: The server successfully processed the request, but is not returning any content.",
+        "answer": "205"
+    },
+    {
+        "prompt": "Partial Content: The server is delivering only part of the resource due to a range header sent by the client.",
+        "answer": "206"
+    },
+    {
+        "prompt": "Multi-Status: Conveys information about multiple resources, for situations where multiple status codes might be appropriate.",
+        "answer": "207"
+    },
+    {
+        "prompt": "Already Reported: The members of a DAV binding have already been enumerated in a previous reply to this request, and are not being included again.",
+        "answer": "208"
+    },
+    {
+        "prompt": "IM Used: The server has fulfilled a request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance.",
+        "answer": "226"
+    },
+    {
+        "prompt": "Multiple Choices: The requested resource has different choices and cannot be resolved into one.",
+        "answer": "300"
+    },
+    {
         "prompt": "Moved Permanently: The requested resource has been assigned a new permanent URI and any future references should use one of the returned URIs.",
         "answer": "301"
+    },
+    {
+        "prompt": "Found: The requested resource resides temporarily under a different URI.",
+        "answer": "302"
     },
     {
         "prompt": "See Other: The response to the request can be found under another URI using the GET method and should be retrieved by the client.",
         "answer": "303"
     },
     {
+        "prompt": "Not Modified: The resource has not been modified since the version specified by the request headers.",
+        "answer": "304"
+    },
+    {
+        "prompt": "Use Proxy (Deprecated): The requested resource is available only through a proxy, the address for which is provided in the response.",
+        "answer": "305"
+    },
+    {
         "prompt": "Temporary Redirect: The request should be repeated with another URI, but future requests can still use the original URI.",
         "answer": "307"
+    },
+    {
+        "prompt": "Permanent Redirect: The request and all future requests should be repeated using another URI.",
+        "answer": "308"
     },
     {
         "prompt": "Bad Request: The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).",
@@ -48,6 +92,18 @@
         "answer": "405"
     },
     {
+        "prompt": "Not Acceptable: The resource identified by the request is only capable of generating response entities that have content characteristics not acceptable according to the accept headers sent in the request.",
+        "answer": "406"
+    },
+    {
+        "prompt": "Proxy Authentication Required: The client must first authenticate itself with the proxy.",
+        "answer": "407"
+    },
+    {
+        "prompt": "Request Timeout: The server did not receive a complete request message within the time that it was prepared to wait.",
+        "answer": "408"
+    },
+    {
         "prompt": "Gone: The resource requested is no longer available and will not be available again.",
         "answer": "410"
     },
@@ -60,8 +116,48 @@
         "answer": "415"
     },
     {
-        "prompt": "Proxy Authentication Required: The client must first authenticate itself with the proxy.",
-        "answer": "407"
+        "prompt": "Requested Range Not Satisfiable: The client has asked for a portion of the file, but the server cannot supply that portion.",
+        "answer": "416"
+    },
+    {
+        "prompt": "Expectation Failed: The server cannot meet the requirements of the Expect request-header field.",
+        "answer": "417"
+    },
+    {
+        "prompt": "I'm a teapot: This code was defined in 1998 as one of the traditional IETF April Fools' jokes, in RFC 2324, Hyper Text Coffee Pot Control Protocol.",
+        "answer": "418"
+    },
+    {
+        "prompt": "Unprocessable Entity: The server understands the content type of the request entity, and the syntax of the request entity is correct, but it was unable to process the contained instructions.",
+        "answer": "422"
+    },
+    {
+        "prompt": "Locked: The resource that is being accessed is locked.",
+        "answer": "423"
+    },
+    {
+        "prompt": "Failed Dependency: The request failed due to failure of a previous request.",
+        "answer": "424"
+    },
+    {
+        "prompt": "Upgrade Required: The client should switch to a different protocol such as TLS/1.0.",
+        "answer": "426"
+    },
+    {
+        "prompt": "Precondition Required: The origin server requires the request to be conditional.",
+        "answer": "428"
+    },
+    {
+        "prompt": "Too Many Requests: The user has sent too many requests in a given amount of time.",
+        "answer": "429"
+    },
+    {
+        "prompt": "Request Header Fields Too Large: The server is unwilling to process the request because its header fields are too large.",
+        "answer": "431"
+    },
+    {
+        "prompt": "Unavailable For Legal Reasons: The server is denying access to the resource as a consequence of a legal demand.",
+        "answer": "451"
     },
     {
         "prompt": "Internal Server Error: The server encountered an unexpected condition that prevented it from fulfilling the request.",
@@ -78,5 +174,33 @@
     {
         "prompt": "Service Unavailable: The server is currently unable to handle the request due to temporary overloading or maintenance.",
         "answer": "503"
+    },
+    {
+        "prompt": "Gateway Timeout: The server, while acting as a gateway or proxy, did not receive a timely response from the upstream server.",
+        "answer": "504"
+    },
+    {
+        "prompt": "HTTP Version Not Supported: The server does not support the HTTP protocol version that was used in the request.",
+        "answer": "505"
+    },
+    {
+        "prompt": "Variant Also Negotiates: Transparent content negotiation for the request results in a circular reference.",
+        "answer": "506"
+    },
+    {
+        "prompt": "Insufficient Storage: The method could not be performed on the resource because the server is unable to store the representation needed to successfully complete the request.",
+        "answer": "507"
+    },
+    {
+        "prompt": "Loop Detected: The server detected an infinite loop while processing the request.",
+        "answer": "508"
+    },
+    {
+        "prompt": "Not Extended: Further extensions to the request are required for the server to fulfill it.",
+        "answer": "510"
+    },
+    {
+        "prompt": "Network Authentication Required: The client needs to authenticate to gain network access.",
+        "answer": "511"
     }
 ]
