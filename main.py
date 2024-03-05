@@ -9,7 +9,7 @@ def main():
     if state.quiz is None:
         with open(QUESTIONS_PATH, "r") as f:
             questions = json.load(f)
-            state.quiz = Quiz(questions, reps=1)
+            state.quiz = Quiz(questions, reps=2)
 
     with hd.box(
         gap=1, 
@@ -18,6 +18,9 @@ def main():
         height="100%",
         align="center",
         justify="center",):
+
+        hd.h1("Learn HTTP Codes")
+
         if not state.quiz.is_complete():
             question = state.quiz.get_current_question()
             hd.text(state.quiz.get_current_question())
@@ -31,17 +34,15 @@ def main():
                     state.quiz.answer_question(form.form_data['answer'])
                     hd.text(form.form_data['answer'])
                     form.form_data['answer'] = ""
-                            
-            hd.text(state.quiz.get_score())
-            hd.text("(Ans: " + state.quiz.current_question.answer + ")")
+
+            if not state.quiz.is_complete():                
+                hd.text(state.quiz.get_score())
+                hd.text("(Ans: " + state.quiz.current_question.answer + ")")
         else:
-            hd.text("Quiz Complete!")
+            hd.text("Well done!")
 
         with hd.box(width="100%"):
             progress_percent = state.quiz.get_score()*100/state.quiz.get_total_questions()
             bar = hd.progress_bar(str(progress_percent) + "%", value=int(progress_percent))
-    
-        
-
 
 hd.run(main)
