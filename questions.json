@@ -1,5 +1,25 @@
 [
     {
+        "prompt": "Continue: The initial part of a request has been received and has not yet been rejected by the server.",
+        "answer": "100",
+        "level": 2
+    },
+    {
+        "prompt": "Switching Protocols: The server understands and is willing to comply with the client's request, via the Upgrade message header field, for a change in the application protocol being used on this connection.",
+        "answer": "101",
+        "level": 3
+    },
+    {
+        "prompt": "Processing: The server has accepted the complete request but has not yet completed it.",
+        "answer": "102",
+        "level": 3
+    },
+    {
+        "prompt": "Early Hints: Used to return some response headers before final HTTP message.",
+        "answer": "103",
+        "level": 3
+    },
+    {
         "prompt": "OK: The request succeeded.",
         "answer": "200",
         "level": 1
