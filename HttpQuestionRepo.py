@@ -1,7 +1,7 @@
 import json
 
 class HttpQuestionRepo:
-    def __init__(self, data_source):
+    def __init__(self, data_source="questions.json"):
         self.data_source = data_source
 
     def _load_questions(self):
@@ -13,7 +13,9 @@ class HttpQuestionRepo:
             questions = self.data_source
         return questions
 
-    def get_questions(self, difficulty=1):
+    def get_questions(self, difficulty=None):
         """Filter questions by difficulty."""
         questions = self._load_questions()
+        if difficulty is None:
+            return questions
         return [q for q in questions if q['level'] == difficulty]

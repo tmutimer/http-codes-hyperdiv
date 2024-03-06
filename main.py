@@ -4,9 +4,9 @@ import json
 from HttpQuestionRepo import HttpQuestionRepo
 
 def main():
-    state = hd.state(quiz=None)
+    state = hd.state(quiz=None, difficulty=1)
     if state.quiz is None:
-            questions = HttpQuestionRepo.get_questions()
+            questions = HttpQuestionRepo().get_questions(difficulty=state.difficulty)
             state.quiz = Quiz(questions, reps=2)
 
     with hd.box(
@@ -19,7 +19,26 @@ def main():
 
         hd.h1("Learn HTTP Codes")
 
-        if not state.quiz.is_complete():
+        with hd.button_group(margin=5):
+            level1 = hd.button("Level 1")
+            level2 = hd.button("Level 2")
+            level3 = hd.button("Level 3")
+            level4 = hd.button("All")
+            if level1.clicked:
+                state.difficulty = 1
+                state.quiz=Quiz(HttpQuestionRepo().get_questions(difficulty=state.difficulty), reps=2)
+            if level2.clicked:
+                state.difficulty = 2
+                state.quiz=Quiz(HttpQuestionRepo().get_questions(difficulty=state.difficulty), reps=2)
+            if level3.clicked:
+                state.difficulty = 3
+                state.quiz=Quiz(HttpQuestionRepo().get_questions(difficulty=state.difficulty), reps=2)
+            if level4.clicked:
+                state.difficulty = None
+                state.quiz=Quiz(HttpQuestionRepo().get_questions(difficulty=state.difficulty), reps=2)
+
+
+        if state.quiz is None or not state.quiz.is_complete():
             with hd.box(height=5):
                 hd.h3(state.quiz.get_current_question())
             with hd.form(direction="horizontal", gap=1, grow=1) as form:
