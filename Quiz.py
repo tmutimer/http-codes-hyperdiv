@@ -1,3 +1,4 @@
+from collections import defaultdict
 import random
 import hyperdiv as hd
 from Question import Question
@@ -61,16 +62,8 @@ class Quiz():
     
     
     def get_scores_by_category(self):
-        categories = set([q.category for q in self.questions])
-        scores_by_category = {}
-        
-        for category in categories:
-            category_score = sum([q.score for q in self.questions if q.category == category])
-            category_total_questions = sum([q.reps for q in self.questions if q.category == category])
-            
-            scores_by_category[category] = {
-                'score': category_score,
-                'total_questions': category_total_questions 
-                }
-        
-        return scores_by_category
+        category_scores = defaultdict(lambda: {'score': 0, 'total_questions': 0})
+        for question in self.questions:
+            category_scores[question.category]['score'] += question.score
+            category_scores[question.category]['total_questions'] += question.reps
+        return dict(category_scores)
