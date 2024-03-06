@@ -30,7 +30,17 @@ def main():
             with hd.form(direction="horizontal", gap=1, grow=1) as form:
                 with hd.box():
                     hd.text("Type your answer and press Enter:")
-                    answer_box = form.text_input(value="", name="answer", grow=1, placeholder="e.g. 403")
+                    answer_box = form.text_input(value="",
+                                                 name="answer", 
+                                                 grow=1, 
+                                                 placeholder="e.g. 403",
+                                                 input_type='number',
+                                                 maxlength=3,
+                                                 autocomplete='Off',
+                                                 no_spin_buttons=True,
+                                                 pill=True,
+                                                 autofocus=True,
+                                                 suffix_icon="arrow-return-left")
                 # form.submit_button("Submit", variant="success")
 
                 if form.submitted:
@@ -40,7 +50,6 @@ def main():
 
             prev_question = state.quiz.previous_question if state.quiz.previous_question else None
             if prev_question:
-                print(f"prev_question: {prev_question.prompt}")
                 last_answer_correct = state.quiz.previous_question.answer_history[-1]
                 if last_answer_correct:
                     with hd.hbox(gap=0.5):
