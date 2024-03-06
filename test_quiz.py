@@ -5,15 +5,15 @@ from Question import Question
 
 def create_test_quiz():
     questions = [
-        {"prompt": "What color are apples?", "answer": "red"},
-        {"prompt": "What color are bananas?", "answer": "yellow"},
-        {"prompt": "What color are oranges?", "answer": "orange"},
+        {"prompt": "What color are apples?", "answer": "red", "level": 1, 'category': 'fruit'},
+        {"prompt": "What color are bananas?", "answer": "yellow", "level": 2, 'category': 'fruit'},
+        {"prompt": "What color are oranges?", "answer": "orange", "level": 3, 'category': 'fruit'},
     ]
     return Quiz(questions)
 
 def create_quiz_single_question():
     questions = [
-        {"prompt": "What color are apples?", "answer": "red"},
+        {"prompt": "What color are apples?", "answer": "red", "level": 1, 'category': 'fruit'},
     ]
     return Quiz(questions)
     
@@ -39,7 +39,7 @@ def test_get_total_questions():
     assert quiz.get_total_questions() == 1
     quiz = create_test_quiz()
     assert quiz.get_total_questions() == 3
-    quiz = Quiz([{"prompt": "What color are apples?", "answer": "red"}], reps=2)
+    quiz = Quiz([{"prompt": "What color are apples?", "answer": "red", 'level':1, 'category': 'fruit'}], reps=2)
     assert quiz.get_total_questions() == 2
 
 def test_incorrect_answer():
@@ -60,7 +60,7 @@ def test_final_question_no_repeat():
     Test that we don't test the final question more than once in a row
     '''
     questions = [
-        {"prompt": "What color are apples?", "answer": "red"},
+        {"prompt": "What color are apples?", "answer": "red", "level": 1, 'category': 'fruit'},
     ]
     quiz = Quiz(questions, reps=3)
     quiz.answer_question('red')
@@ -69,9 +69,9 @@ def test_final_question_no_repeat():
 
 def test_get_questions_for_difficulty():
     questions = [
-        {"prompt": "What color are apples?", "answer": "red", "level": 1},
-        {"prompt": "What color are bananas?", "answer": "yellow", "level": 2},
-        {"prompt": "What color are oranges?", "answer": "orange", "level": 3},
+        {"prompt": "What color are apples?", "answer": "red", "level": 1, 'category': 'fruit'},
+        {"prompt": "What color are bananas?", "answer": "yellow", "level": 2, 'category': 'fruit'},
+        {"prompt": "What color are oranges?", "answer": "orange", "level": 3, 'category': 'fruit'},
     ]
     question_bank = HttpQuestionRepo(questions)
     quiz = Quiz(question_bank.get_questions(difficulty=1))
