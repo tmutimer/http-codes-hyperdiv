@@ -1,18 +1,13 @@
 import hyperdiv as hd
 from Quiz import Quiz
 import json
-
-QUESTIONS_PATH = "questions.json"
-
-def get_questions(difficulty=1):
-    with open(QUESTIONS_PATH, "r") as f:
-        questions = json.load(f)
-        return [q for q in questions if q['level'] == difficulty]
+from HttpQuestionRepo import HttpQuestionRepo
 
 def main():
     state = hd.state(quiz=None)
     if state.quiz is None:
-            state.quiz = Quiz(get_questions(), reps=2)
+            questions = HttpQuestionRepo.get_questions()
+            state.quiz = Quiz(questions, reps=2)
 
     with hd.box(
         gap=1, 

@@ -1,4 +1,5 @@
 import math
+from HttpQuestionRepo import HttpQuestionRepo
 from Quiz import Quiz
 from Question import Question
 
@@ -65,3 +66,19 @@ def test_final_question_no_repeat():
     quiz.answer_question('red')
     assert quiz.get_current_question() == "Quiz Complete!"
     assert quiz.get_score() == quiz.get_total_questions()
+
+def test_get_questions_for_difficulty():
+    questions = [
+        {"prompt": "What color are apples?", "answer": "red", "level": 1},
+        {"prompt": "What color are bananas?", "answer": "yellow", "level": 2},
+        {"prompt": "What color are oranges?", "answer": "orange", "level": 3},
+    ]
+    question_bank = HttpQuestionRepo(questions)
+    quiz = Quiz(question_bank.get_questions(difficulty=1))
+    assert quiz.get_current_question() == "What color are apples?"
+
+    quiz = Quiz(question_bank.get_questions(difficulty=2))
+    assert quiz.get_current_question() == "What color are bananas?"
+
+    quiz = Quiz(question_bank.get_questions(difficulty=3))
+    assert quiz.get_current_question() == "What color are oranges?"
