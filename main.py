@@ -19,7 +19,7 @@ def main():
 
         hd.h1("Learn HTTP Codes")
 
-        with hd.button_group(margin=5):
+        with hd.button_group(margin=2):
             level1 = hd.button("Level 1")
             level2 = hd.button("Level 2")
             level3 = hd.button("Level 3")
