@@ -5,7 +5,7 @@ from Question import Question
 class Quiz():
     def __init__(self, questions, reps=1):
         self.reps = reps
-        self.questions = [Question(q['prompt'], q['answer'],reps=self.reps) for q in questions]
+        self.questions = [Question(q['prompt'], q['answer'], q['category'], reps=self.reps) for q in questions]
         self.current_question = None
         self.previous_question = None
         self.select_new_question()
@@ -22,7 +22,7 @@ class Quiz():
         correct = question.check_answer(answer)
         question.answer_history.append(correct)
         if correct:
-            if self.is_final_question():
+            if self._is_final_question():
                 question.score = self.reps
             else:
                 question.score += 1
@@ -31,7 +31,7 @@ class Quiz():
             question.score = max(0, question.score - 1)
         return (correct, question.score)
     
-    def is_final_question(self):
+    def _is_final_question(self):
         # if there are no other incomplete questions, this is the final question
         return len([q for q in self.questions if not q.is_complete() and q != self.current_question]) == 0
 
@@ -58,3 +58,19 @@ class Quiz():
     
     def get_previous_question(self):
         return (self.previous_question.prompt, self.previous_question.answer_history[-1])
+    
+    
+    def get_scores_by_category(self):
+        categories = set([q.category for q in self.questions])
+        scores_by_category = {}
+        
+        for category in categories:
+            category_score = sum([q.score for q in self.questions if q.category == category])
+            category_total_questions = sum([q.reps for q in self.questions if q.category == category])
+            
+            scores_by_category[category] = {
+                'score': category_score,
+                'total_questions': category_total_questions 
+                }
+        
+        return scores_by_category

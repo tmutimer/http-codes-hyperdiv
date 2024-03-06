@@ -82,3 +82,17 @@ def test_get_questions_for_difficulty():
 
     quiz = Quiz(question_bank.get_questions(difficulty=3))
     assert quiz.get_current_question() == "What color are oranges?"
+
+def test_get_scores_by_category():
+    questions = [
+        {"prompt": "What color are apples?", "answer": "red", "level": 1, 'category': 'fruit'},
+        {"prompt": "What color are bananas?", "answer": "yellow", "level": 2, 'category': 'fruit'},
+        {"prompt": "What color are oranges?", "answer": "orange", "level": 3, 'category': 'fruit'},
+    ]
+    question_bank = HttpQuestionRepo(questions)
+    quiz = Quiz(question_bank.get_questions(), reps=2)
+    quiz.answer_question(quiz.current_question.answer)
+    scores = quiz.get_scores_by_category()
+    print(scores)
+    assert quiz.get_scores_by_category()['fruit']['score'] == 1
+    assert quiz.get_scores_by_category()['fruit']['total_questions'] == 6

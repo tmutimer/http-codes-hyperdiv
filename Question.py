@@ -1,9 +1,10 @@
 class Question():
-    def __init__(self, prompt, answer, reps=1):
+    def __init__(self, prompt, answer, category=None, reps=1):
         self.prompt = prompt
         self.answer = answer
         self.score = 0
         self.reps = reps
+        self.category = category
         self.answer_history = []
 
     def check_answer(self, answer):
