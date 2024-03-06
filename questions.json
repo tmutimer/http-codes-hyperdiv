@@ -2,7 +2,7 @@
     {
         "prompt": "Continue: The initial part of a request has been received and has not yet been rejected by the server.",
         "answer": "100",
-        "level": 2
+        "level": 1
     },
     {
         "prompt": "Switching Protocols: The server understands and is willing to comply with the client's request, via the Upgrade message header field, for a change in the application protocol being used on this connection.",
