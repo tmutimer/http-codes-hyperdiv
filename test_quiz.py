@@ -1,7 +1,5 @@
-import math
 from HttpQuestionRepo import HttpQuestionRepo
 from Quiz import Quiz
-from Question import Question
 
 def create_test_quiz():
     questions = [
@@ -25,7 +23,7 @@ def test_get_current_question():
 def test_answer_question():
     quiz = create_quiz_single_question()
     result = quiz.answer_question('red')
-    assert result == True
+    assert result is True
     assert quiz.get_score() == 1
 
 def test_is_complete():
@@ -45,7 +43,7 @@ def test_get_total_questions():
 def test_incorrect_answer():
     quiz = create_quiz_single_question()
     result = quiz.answer_question('blue')
-    assert result == False
+    assert result is False
     assert quiz.get_score() == 0
 
 def test_previous_question():

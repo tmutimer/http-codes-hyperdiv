@@ -1,4 +1,4 @@
-class Question():
+class Question:
     def __init__(self, prompt, answer, category=None, reps=1):
         self.prompt = prompt
         self.answer = answer
@@ -9,6 +9,6 @@ class Question():
 
     def check_answer(self, answer):
         return answer == self.answer
-    
+
     def is_complete(self):
         return self.score >= self.reps
