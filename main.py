@@ -68,12 +68,13 @@ def main():
             hd.text("Which HTTP code is this?")
             with hd.hbox(border="1px solid gray-300", border_radius="large"):
                 hd.markdown(
-                    f"**{state.quiz.current_question.name}**:", 
-                    width=15,
+                    f"**{state.quiz.current_question.name}**:",
+                    align="end",
+                    width=10,
                     padding=1,
                     background_color="gray-50",
                     border_radius="large",
-                    )
+                )
                 hd.text(
                     state.quiz.current_question.description,
                     padding=1,
@@ -108,27 +109,27 @@ def main():
                 )
 
             prev_question = (
-                state.quiz.previous_question if state.quiz.previous_question else None
+                state.quiz.previous_question or None
             )
             if prev_question:
-                last_answer_correct = state.quiz.previous_question.answer_history[-1]
-                if last_answer_correct:
-                    with hd.hbox(gap=0.5):
-                        hd.icon("check-circle")
-                        hd.text("Correct!")
-
-                if last_answer_correct is False:
-                    dialog = hd.dialog("Incorrect!", opened=True)
-                    # must reset dialog from mutated state after close
-                    dialog.reset_prop("opened")
-                    with dialog:
+                dialog = hd.dialog("Incorrect")                
+                with dialog:
+                    with hd.box(gap=1):
                         hd.markdown("## The correct answer is: " + prev_question.answer)
-                        hd.text(prev_question.name + prev_question.description)
+                        hd.text(f"{prev_question.name}: {prev_question.description}")
                         hd.markdown(
                             f"[More info about this code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/{prev_question.answer})"
                         )
                         if hd.button("Continue").clicked:
                             dialog.opened = False
+
+                last_answer_correct = state.quiz.previous_question.answer_history[-1]
+                if last_answer_correct:
+                    with hd.hbox(gap=0.5):
+                        hd.icon("check-circle")
+                        hd.text("Correct!")
+                else:
+                    dialog.opened = True
         else:
             hd.text("Well done!")
 
