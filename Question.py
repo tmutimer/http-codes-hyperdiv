@@ -1,6 +1,7 @@
 class Question:
-    def __init__(self, prompt, answer, category=None, reps=1):
-        self.prompt = prompt
+    def __init__(self, name, description, answer, category=None, reps=1):
+        self.name = name
+        self.description = description
         self.answer = answer
         self.score = 0
         self.reps = reps

@@ -7,7 +7,7 @@ class Quiz:
     def __init__(self, questions, reps=1):
         self.reps = reps
         self.questions = [
-            Question(q["prompt"], q["answer"], q["category"], reps=self.reps)
+            Question(q["name"], q["description"], q["answer"], q["category"], reps=self.reps)
             for q in questions
         ]
         self.current_question = None
@@ -16,7 +16,7 @@ class Quiz:
 
     def get_current_question(self):
         return (
-            self.current_question.prompt if self.current_question else "Quiz Complete!"
+            f"{self.current_question.name}: {self.current_question.description}" if self.current_question else "Quiz Complete!"
         )
 
     def answer_question(self, answer):
@@ -77,7 +77,7 @@ class Quiz:
 
     def get_previous_question(self):
         return (
-            self.previous_question.prompt,
+            self.previous_question.name + self.previous_question.description,
             self.previous_question.answer_history[-1],
         )
 

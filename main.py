@@ -11,7 +11,6 @@ def main():
 
     with hd.box(
         gap=1,
-        grow=1,
         margin=8,
         height="100%",
         align="center",
@@ -50,8 +49,13 @@ def main():
                 )
 
         if state.quiz is None or not state.quiz.is_complete():
-            with hd.box(height=5):
-                hd.h3(state.quiz.get_current_question())
+            hd.text(
+                state.quiz.get_current_question(),
+                background_color="gray-50",
+                border_radius="large",
+                width=30,
+                padding=1
+            )
             with hd.form(direction="horizontal", gap=1, grow=1) as form:
                 with hd.box():
                     hd.text("Type your answer and press Enter:")
@@ -72,6 +76,11 @@ def main():
                 if form.submitted:
                     state.quiz.answer_question(form.form_data["answer"])
                     answer_box.value = ""
+            with hd.box(width=15, margin_top=0):
+                progress_percent = int(
+                    state.quiz.get_score() * 100 / state.quiz.get_total_questions()
+                )
+                hd.progress_bar(str(progress_percent) + "%", value=int(progress_percent))
 
             prev_question = (
                 state.quiz.previous_question if state.quiz.previous_question else None
@@ -89,7 +98,7 @@ def main():
                     dialog.reset_prop("opened")
                     with dialog:
                         hd.markdown("## The correct answer is: " + prev_question.answer)
-                        hd.text(prev_question.prompt)
+                        hd.text(prev_question.name + prev_question.description)
                         hd.markdown(
                             f"[More info about this code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/{prev_question.answer})"
                         )
@@ -98,14 +107,7 @@ def main():
         else:
             hd.text("Well done!")
 
-        with hd.box(width="90%", margin=5):
-            hd.text("Progress:")
-            progress_percent = int(
-                state.quiz.get_score() * 100 / state.quiz.get_total_questions()
-            )
-            hd.progress_bar(str(progress_percent) + "%", value=int(progress_percent))
-
-        with hd.box(height=30, width="90%", margin=5):
+        with hd.box(height=25, width="90%", margin_left=5, margin_right=5):
             category_scores = state.quiz.get_scores_by_category()
             dataset = []
             labels = []
@@ -119,6 +121,8 @@ def main():
                 r_max=100,
                 show_tick_labels=False
                 )
+            
+
 
 
 hd.run(main)
