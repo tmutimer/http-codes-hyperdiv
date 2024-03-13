@@ -89,7 +89,7 @@ def main():
                         grow=1,
                         placeholder="e.g. 403",
                         input_type="number",
-                        maxlength=3,
+                        inputmode="numeric",
                         autocomplete="Off",
                         no_spin_buttons=True,
                         pill=True,
@@ -100,14 +100,6 @@ def main():
                 if form.submitted:
                     state.quiz.answer_question(form.form_data["answer"])
                     answer_box.value = ""
-            with hd.box(width=15, margin_top=0):
-                progress_percent = int(
-                    state.quiz.get_score() * 100 / state.quiz.get_total_questions()
-                )
-                hd.progress_bar(
-                    str(progress_percent) + "%", value=int(progress_percent)
-                )
-
             prev_question = (
                 state.quiz.previous_question or None
             )
@@ -124,12 +116,14 @@ def main():
                             dialog.opened = False
 
                 last_answer_correct = state.quiz.previous_question.answer_history[-1]
-                if last_answer_correct:
-                    with hd.hbox(gap=0.5):
-                        hd.icon("check-circle")
-                        hd.text("Correct!")
-                else:
+                if not last_answer_correct:
                     dialog.opened = True
+                # if last_answer_correct:
+                #     with hd.hbox(gap=0.5):
+                #         hd.icon("check-circle")
+                #         hd.text("Correct!")
+                # else:
+                #     dialog.opened = True
         else:
             hd.text("Well done!")
 
