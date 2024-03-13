@@ -19,10 +19,26 @@ def main():
         hd.h1("Learn HTTP Codes")
 
         with hd.button_group(margin=2):
-            level1 = hd.button("Level 1") if state.difficulty != 1 else hd.button("Level 1", variant="primary")
-            level2 = hd.button("Level 2") if state.difficulty != 2 else hd.button("Level 2", variant="primary")
-            level3 = hd.button("Level 3") if state.difficulty != 3 else hd.button("Level 3", variant="primary")
-            level4 = hd.button("All") if state.difficulty is not None else hd.button("All", variant="primary")
+            level1 = (
+                hd.button("Level 1")
+                if state.difficulty != 1
+                else hd.button("Level 1", variant="primary")
+            )
+            level2 = (
+                hd.button("Level 2")
+                if state.difficulty != 2
+                else hd.button("Level 2", variant="primary")
+            )
+            level3 = (
+                hd.button("Level 3")
+                if state.difficulty != 3
+                else hd.button("Level 3", variant="primary")
+            )
+            level4 = (
+                hd.button("All")
+                if state.difficulty is not None
+                else hd.button("All", variant="primary")
+            )
             if level1.clicked:
                 state.difficulty = 1
                 state.quiz = Quiz(
@@ -49,15 +65,22 @@ def main():
                 )
 
         if state.quiz is None or not state.quiz.is_complete():
-            hd.text(
-                state.quiz.get_current_question(),
-                background_color="gray-50",
-                border_radius="large",
-                width=30,
-                padding=1
-            )
+            hd.text("Which HTTP code is this?")
+            with hd.hbox(border="1px solid gray-300", border_radius="large"):
+                hd.markdown(
+                    f"**{state.quiz.current_question.name}**:", 
+                    width=15,
+                    padding=1,
+                    background_color="gray-50",
+                    border_radius="large",
+                    )
+                hd.text(
+                    state.quiz.current_question.description,
+                    padding=1,
+                    width=30,
+                )
             with hd.form(direction="horizontal", gap=1, grow=1) as form:
-                with hd.box():
+                with hd.box(width=20, align="center"):
                     hd.text("Type your answer and press Enter:")
                     answer_box = form.text_input(
                         value="",
@@ -80,7 +103,9 @@ def main():
                 progress_percent = int(
                     state.quiz.get_score() * 100 / state.quiz.get_total_questions()
                 )
-                hd.progress_bar(str(progress_percent) + "%", value=int(progress_percent))
+                hd.progress_bar(
+                    str(progress_percent) + "%", value=int(progress_percent)
+                )
 
             prev_question = (
                 state.quiz.previous_question if state.quiz.previous_question else None
@@ -112,17 +137,17 @@ def main():
             dataset = []
             labels = []
             for category, scores in category_scores.items():
-                dataset.append(max(scores["score"] * 100 / scores["total_questions"],10))
+                dataset.append(
+                    max(scores["score"] * 100 / scores["total_questions"], 10)
+                )
                 labels.append(category)
             hd.radar_chart(
-                tuple(dataset), 
+                tuple(dataset),
                 axis=tuple(labels),
                 r_min=0,
                 r_max=100,
-                show_tick_labels=False
-                )
-            
-
+                show_tick_labels=False,
+            )
 
 
 hd.run(main)
