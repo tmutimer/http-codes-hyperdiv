@@ -4,6 +4,8 @@ from HttpQuestionRepo import HttpQuestionRepo
 
 
 def main():
+    with hd.box(align="end", margin=1):
+        hd.theme_switcher()
     state = hd.state(quiz=None, difficulty=1)
     if state.quiz is None:
         questions = HttpQuestionRepo().get_questions(difficulty=state.difficulty)
@@ -118,12 +120,6 @@ def main():
                 last_answer_correct = state.quiz.previous_question.answer_history[-1]
                 if not last_answer_correct:
                     dialog.opened = True
-                # if last_answer_correct:
-                #     with hd.hbox(gap=0.5):
-                #         hd.icon("check-circle")
-                #         hd.text("Correct!")
-                # else:
-                #     dialog.opened = True
         else:
             hd.text("Well done!")
 
