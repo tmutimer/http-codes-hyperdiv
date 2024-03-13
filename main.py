@@ -20,10 +20,10 @@ def main():
         hd.h1("Learn HTTP Codes")
 
         with hd.button_group(margin=2):
-            level1 = hd.button("Level 1")
-            level2 = hd.button("Level 2")
-            level3 = hd.button("Level 3")
-            level4 = hd.button("All")
+            level1 = hd.button("Level 1") if state.difficulty != 1 else hd.button("Level 1", variant="primary")
+            level2 = hd.button("Level 2") if state.difficulty != 2 else hd.button("Level 2", variant="primary")
+            level3 = hd.button("Level 3") if state.difficulty != 3 else hd.button("Level 3", variant="primary")
+            level4 = hd.button("All") if state.difficulty is not None else hd.button("All", variant="primary")
             if level1.clicked:
                 state.difficulty = 1
                 state.quiz = Quiz(
@@ -104,6 +104,21 @@ def main():
                 state.quiz.get_score() * 100 / state.quiz.get_total_questions()
             )
             hd.progress_bar(str(progress_percent) + "%", value=int(progress_percent))
+
+        with hd.box(height=30, width="90%", margin=5):
+            category_scores = state.quiz.get_scores_by_category()
+            dataset = []
+            labels = []
+            for category, scores in category_scores.items():
+                dataset.append(max(scores["score"] * 100 / scores["total_questions"],10))
+                labels.append(category)
+            hd.radar_chart(
+                tuple(dataset), 
+                axis=tuple(labels),
+                r_min=0,
+                r_max=100,
+                show_tick_labels=False
+                )
 
 
 hd.run(main)
